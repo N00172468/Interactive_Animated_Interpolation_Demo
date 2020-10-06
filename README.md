@@ -28,6 +28,9 @@
 - Designed in a simplistic manner for User Experience (UX).
 - An exercise to test on what we have learned so far within this chapter (i.e. color-shape). 
 
+### Ex. 6 - Colour Interpolation (Tweening)
+- Experimenting with the P5.js function `lerpColor()` to display interpolation.
+
 ---
 ### Message from Lecturer:
 
