@@ -7,14 +7,13 @@ function setup() {
 }
 
 function draw() {
-    background(0);
+    background(0, 0, 10);
 
     let fromColour = color(60, 100, 100);
     let toColour = color(280, 100, 100);
 
     for (let i = 0; i < 10; i++) {
-        fill(fromColour);
-        stroke(toColour);
+        fill(lerpColor(fromColour, toColour, 0.5));
         rect((i * 60) + 30, 100, 50, 50);
     }
 }
