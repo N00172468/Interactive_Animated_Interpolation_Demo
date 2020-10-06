@@ -13,7 +13,7 @@ function draw() {
     let toColour = color(280, 100, 100);
 
     for (let i = 0; i < 10; i++) {
-        fill(lerpColor(fromColour, toColour, 0.5));
+        fill(lerpColor(fromColour, toColour, i / 10));
         rect((i * 60) + 30, 100, 50, 50);
     }
 }
