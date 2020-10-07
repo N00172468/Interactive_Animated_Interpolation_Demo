@@ -16,7 +16,7 @@ function draw() {
     background(0, 0, 0);
 
     spiralExpand();
-    spiralAbstract();
+    // spiralAbstract();
     
 }
 
@@ -31,14 +31,15 @@ function spiralExpand() {
 
     let spiralOne = 0;
     let spiralTwo = 0;
-    let step = 1;
+    // let step = 1;
+    let step = 10;
     // let step = mouseX / 200;
     // let spiralWidth = 20;
-    let spiralWidth = 1;
+    let spiralWidth = 1.25;
     let dynamicWidth = spiralWidth / 250;
     
     beginShape(TRIANGLE_STRIP);
-        translate(width/4, height/2);
+        translate(width/6, height/2);
 
         for (let i = 0; i <= 360 ; i++) {
             spiralOne += step;
@@ -63,6 +64,7 @@ function spiralExpand() {
             vertex(spiralTwoX, spiralTwoY);
         }
     endShape();
+    t = t + 0.005;
   }
 
   function spiralAbstract() {
@@ -78,11 +80,11 @@ function spiralExpand() {
     let spiralTwo = 0;
     let step = 1;
     // let step = mouseX / 200;
-    let spiralWidth = 20.0;
-    let dynamicWidth = spiralWidth / 250;
+    let spiralWidth = 20;
+    let dynamicWidth = spiralWidth / 50;
     
     beginShape(TRIANGLE_STRIP);
-        translate(width/2, 0);
+        // translate(width/2, 0);
 
         for (let i = 0; i <= 50 ; i++) {
             spiralOne += step;
@@ -110,9 +112,4 @@ function spiralExpand() {
         t = t + 0.005;
     }
 
-    // function mouseDragged() {
-    //     move += move;
-    //     if (move > width + height) {
-    //       move = 0;
-    //     }
-    //   }
+    // ADD PARTICLES GETTING SUCKED INTO CENTRE WHILE IT CHANGES COLOUR WHEN PASSED RANGE???
