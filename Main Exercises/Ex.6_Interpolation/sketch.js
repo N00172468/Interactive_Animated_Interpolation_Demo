@@ -114,7 +114,7 @@ function spiralExpand() {
                 spiralWidth += dynamicWidth;
                 spiralTwo = spiralOne + spiralWidth;
                 
-                let rotationalSpeed = PI / 30;
+                let rotationalSpeed = PI / 10;
 
                 let spiralOneX = spiralOne * sin(rotationalSpeed * i * t);
                 let spiralOneY = spiralOne * cos(rotationalSpeed * i * t);
