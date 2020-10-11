@@ -1,5 +1,5 @@
 let t = 0; // Time:
-let rotateSpeed = 10; 
+let rotateSpeed = 5; 
 
 
 function setup() {
@@ -13,18 +13,18 @@ function setup() {
 function draw() {
     background(0, 0, 0);
 
-    // if (mouseIsPressed) {
-    //     if (mouseButton === LEFT) {
-    //         //   ellipse(50, 50, 50, 50);
-    //         rotateSpeed += 1.5;
-    //     }
-    //     if (mouseButton === RIGHT) {
-    //         rotateSpeed = PI / -1;
-    //     }
-    //     if (mouseButton === CENTER) {
-    //         triangle(23, 75, 50, 20, 78, 75);
-    //     }
-    // }
+    if (mouseIsPressed) {
+        if (mouseButton === LEFT) {
+            t += 0.01;
+        }
+        if (mouseButton === CENTER) {
+            t -= 0.01;
+        }
+        if (mouseButton === RIGHT) {
+            t -= 0.005;
+        }
+    }
+    
 
     spiralExpand();
 }
