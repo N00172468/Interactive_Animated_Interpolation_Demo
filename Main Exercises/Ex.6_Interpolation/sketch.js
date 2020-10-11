@@ -2,8 +2,8 @@
 let t = 0; 
 
 // Magnet Variables:
-let friction = 0.98;
-let maxAge = 100;
+let friction = 0.99;
+let maxAge = 50;
 let maxSpeed = 10;
 var particles = [];
 var magnet;
@@ -20,85 +20,88 @@ function setup() {
 }
 
 function draw() {
-    // background(0, 0, 5);
     background(0, 0, 0);
 
     spiralExpand();
-    spiralAbstract();
+    // spiralAbstract();
+    // mousePressed();
 
-    push();
-        // translate(width/6, height/2);
-        // fill(360, 0, 100);
-        noFill();
-        ellipse(magnet.x,magnet.y,50,50);    
-    pop();
+    // push();
+    //     // fill(360, 0, 100);
+    //     noFill();
+    //     ellipse(magnet.x,magnet.y,50,50);    
+    // pop();
     
-    particles.push(new particle(mouseX,mouseY,random(-1,1),random(-1,1)));
-    for (let p of particles){
-        p.draw();
-        p.move();
-        p.magnet();
-    }
-    particles = particles.filter(p => { return p.age < maxAge})
+    
+    // particles.push(new particle(mouseX,mouseY,random(-1,1),random(-1,1)));
+    // for (let p of particles){
+    //     p.draw();
+    //     p.move();
+    //     p.magnet();
+    // }
+    // particles = particles.filter(p => { return p.age < maxAge})
 }
 
 // ADD PARTICLES GETTING SUCKED INTO CENTRE WHILE IT CHANGES COLOUR WHEN PASSED RANGE???
-function particle(x, y, xvel, yvel){
-    this.pos = createVector(x,y);
-    this.vel = createVector(xvel,yvel);
-    this.age = 0;
+// function particle(x, y, xvel, yvel){
+//     this.pos = createVector(x,y);
+//     this.vel = createVector(xvel,yvel);
+//     this.age = 0;
 
-    let changeX = map(mouseX, 0, width, 17, 360);
-    let changeY = map(mouseY, 0, width, 10, 235);
+//     let changeX = map(mouseX, 0, width, 17, 360);
+//     let changeY = map(mouseY, 0, width, 10, 235);
     
-    // let fromColour = color(60, 100, 100);
-    // let toColour = color(280, 100, 100);
-    let fromColour = color(changeX, 100, 100);
-    let toColour = color(changeY, 100, 100);
+//     // let fromColour = color(60, 100, 100);
+//     // let toColour = color(280, 100, 100);
+//     let fromColour = color(changeX, 100, 100);
+//     let toColour = color(changeY, 100, 100);
 
-    // let shrink = map(mouseX, 0, width, 20, 0);
+//     // let shrink = map(mouseX, 0, width, 20, 0);
 
-    this.draw = function(){
-        push();
-            // stroke(360, 100, 100);
-            // stroke(fromColour, toColour, xvel / this.pos.x);
-            stroke(fromColour, toColour, this.pos.x / xvel);
-            // strokeWeight(2);
-            noFill()
-            ellipse(this.pos.x,this.pos.y,20,20);
-        pop(); 
-    }
+//     this.draw = function(){
+//         push();
+//             // stroke(fromColour, toColour, xvel / this.pos.x);
+//             stroke(lerpColor(fromColour, toColour, xvel / this.pos.x));
+//             noFill()
+//             ellipse(this.pos.x,this.pos.y,20,20);
+//         pop(); 
+//     }
 
-    this.move = function(){
-    this.pos.add(this.vel);
-    this.vel.mult(friction);
-    this.vel.limit(maxSpeed);
-    this.age++;
-    }
+//     this.move = function(){
+//     this.pos.add(this.vel);
+//     this.vel.mult(friction);
+//     this.vel.limit(maxSpeed);
+//     this.age++;
+//     }
 
-    this.magnet = function(){
-        var magpull = p5.Vector.sub(magnet,this.pos);
-        var magstrength = magnetStrength / this.pos.dist(magnet);
-        magpull.normalize().mult(magstrength);
-        this.vel.add(magpull);
-    }
-}
+//     this.magnet = function(){
+//         var magpull = p5.Vector.sub(magnet,this.pos);
+//         var magstrength = magnetStrength / this.pos.dist(magnet);
+//         magpull.normalize().mult(magstrength);
+//         this.vel.add(magpull);
+//     }
+// }
+
+// function mousePressed() {
+//     particles.push(new particle(mouseX, mouseY, random(-1,1), random(-1,1)));
+//     for (let p of particles){
+//         p.draw();
+//         p.move();
+//         p.magnet();
+//     }
+//     particles = particles.filter(p => { return p.age < maxAge})
+// }
 
 function spiralExpand() {
     let changeX = map(mouseX, 0, width, 17, 360);
     let changeY = map(mouseY, 0, width, 10, 235);
     
-    // let fromColour = color(60, 100, 100);
-    // let toColour = color(280, 100, 100);
     let fromColour = color(changeX, 100, 100);
     let toColour = color(changeY, 100, 100);
 
     let spiralOne = 0;
     let spiralTwo = 0;
-    // let step = 1;
     let step = 10;
-    // let step = mouseX / 200;
-    // let spiralWidth = 20;
     let spiralWidth = 1.5;
     let dynamicWidth = spiralWidth / 250;
     
@@ -108,12 +111,10 @@ function spiralExpand() {
 
             for (let i = 0; i <= 360 ; i++) {
                 spiralOne += step;
-                // spiralWidth -= dynamicWidth;
                 spiralWidth += dynamicWidth;
                 spiralTwo = spiralOne + spiralWidth;
                 
-                let rotationalSpeed = PI / 20;
-                // let rotationalSpeed = mouseX / 1999;
+                let rotationalSpeed = PI / 30;
 
                 let spiralOneX = spiralOne * sin(rotationalSpeed * i * t);
                 let spiralOneY = spiralOne * cos(rotationalSpeed * i * t);
@@ -122,9 +123,6 @@ function spiralExpand() {
                 let spiralTwoY = spiralTwo * cos(rotationalSpeed * i * t);
                 
                 fill(lerpColor(fromColour, toColour, i / 360)); 
-                stroke(0, 0, 0);
-                strokeWeight(0.75);
-                // stroke(lerpColor(fromColour, toColour, i / 360));
                 vertex(spiralOneX, spiralOneY);
                 vertex(spiralTwoX, spiralTwoY);
             }
@@ -138,21 +136,17 @@ function spiralExpand() {
     let changeX = map(mouseX, 0, width, 120, 60);
     let changeY = map(mouseY, 0, width, 300, 150);
 
-    // let fromColour = color(60, 100, 100);
-    // let toColour = color(280, 100, 100);
     let fromColour = color(changeX, 100, 100);
     let toColour = color(changeY, 100, 100);
 
     let spiralOne = 0;
     let spiralTwo = 0;
     let step = 1;
-    // let step = mouseX / 200;
     let spiralWidth = 20;
     let dynamicWidth = spiralWidth / 50;
     
     push();
         beginShape(TRIANGLE_STRIP);
-            // translate(width/2, 0);
             translate(width/6, height/2);
 
             for (let i = 0; i <= 50 ; i++) {
@@ -161,8 +155,6 @@ function spiralExpand() {
                 spiralTwo = spiralOne + spiralWidth;
                 
                 let rotationalSpeed = PI / -10;
-                // let rotationalSpeed = mouseX / 999;
-                // let rotationalSpeed = mouseX / -999;
 
                 let spiralOneX = spiralOne * sin(rotationalSpeed * i * t);
                 let spiralOneY = spiralOne * cos(rotationalSpeed * i * t);
@@ -171,9 +163,6 @@ function spiralExpand() {
                 let spiralTwoY = spiralTwo * cos(rotationalSpeed * i * t);
                 
                 fill(lerpColor(fromColour, toColour, i / 50)); 
-                // stroke(0, 0, 100);
-                // strokeWeight(0.5);
-                // stroke(lerpColor(fromColour, toColour, i / 50));
                 vertex(spiralOneX, spiralOneY);
                 vertex(spiralTwoX, spiralTwoY);
             }
