@@ -35,7 +35,7 @@ function spiralExpand() {
     let step = 10;
     // let step = mouseX / 200;
     // let spiralWidth = 20;
-    let spiralWidth = 1.25;
+    let spiralWidth = 1.5;
     let dynamicWidth = spiralWidth / 250;
     
     beginShape(TRIANGLE_STRIP);
@@ -47,14 +47,14 @@ function spiralExpand() {
             spiralWidth += dynamicWidth;
             spiralTwo = spiralOne + spiralWidth;
             
-            let ang = PI / 20;
-            // let ang = mouseX / 1999;
+            let rotationalSpeed = PI / 20;
+            // let rotationalSpeed = mouseX / 1999;
 
-            let spiralOneX = spiralOne * sin(ang * i * t);
-            let spiralOneY = spiralOne * cos(ang * i * t);
+            let spiralOneX = spiralOne * sin(rotationalSpeed * i * t);
+            let spiralOneY = spiralOne * cos(rotationalSpeed * i * t);
 
-            let spiralTwoX = spiralTwo * sin(ang * i * t);
-            let spiralTwoY = spiralTwo * cos(ang * i * t);
+            let spiralTwoX = spiralTwo * sin(rotationalSpeed * i * t);
+            let spiralTwoY = spiralTwo * cos(rotationalSpeed * i * t);
             
             fill(lerpColor(fromColour, toColour, i / 360)); 
             stroke(0, 0, 0);
@@ -91,15 +91,15 @@ function spiralExpand() {
             spiralWidth -= dynamicWidth;
             spiralTwo = spiralOne + spiralWidth;
             
-            let ang = PI / -2;
-            // let ang = mouseX / 999;
-            // let ang = mouseX / -999;
+            let rotationalSpeed = PI / -10;
+            // let rotationalSpeed = mouseX / 999;
+            // let rotationalSpeed = mouseX / -999;
 
-            let spiralOneX = spiralOne * sin(ang * i * t);
-            let spiralOneY = spiralOne * cos(ang * i * t);
+            let spiralOneX = spiralOne * sin(rotationalSpeed * i * t);
+            let spiralOneY = spiralOne * cos(rotationalSpeed * i * t);
 
-            let spiralTwoX = spiralTwo * sin(ang * i * t);
-            let spiralTwoY = spiralTwo * cos(ang * i * t);
+            let spiralTwoX = spiralTwo * sin(rotationalSpeed * i * t);
+            let spiralTwoY = spiralTwo * cos(rotationalSpeed * i * t);
             
             fill(lerpColor(fromColour, toColour, i / 50)); 
             // stroke(0, 0, 100);
