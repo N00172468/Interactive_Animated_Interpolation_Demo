@@ -22,8 +22,9 @@ function setup() {
 function draw() {
     background(0, 0, 0);
 
-    spiralExpand();
+    // spiralExpand();
     spiralAbstract();
+    mousePressed();
 
     push();
         // fill(360, 0, 100);
@@ -32,13 +33,13 @@ function draw() {
     pop();
     
     
-    particles.push(new particle(mouseX,mouseY,random(-1,1),random(-1,1)));
-    for (let p of particles){
-        p.draw();
-        p.move();
-        p.magnet();
-    }
-    particles = particles.filter(p => { return p.age < maxAge})
+    // particles.push(new particle(mouseX,mouseY,random(-1,1),random(-1,1)));
+    // for (let p of particles){
+    //     p.draw();
+    //     p.move();
+    //     p.magnet();
+    // }
+    // particles = particles.filter(p => { return p.age < maxAge})
 }
 
 // ADD PARTICLES GETTING SUCKED INTO CENTRE WHILE IT CHANGES COLOUR WHEN PASSED RANGE???
@@ -80,6 +81,17 @@ function particle(x, y, xvel, yvel){
         magpull.normalize().mult(magstrength);
         this.vel.add(magpull);
     }
+}
+
+function mousePressed() {
+    particles.push(new particle(mouseX, mouseY, random(-1,1), random(-1,1)));
+    for (let p of particles){
+        p.draw();
+        p.move();
+        p.magnet();
+    }
+    particles = particles.filter(p => { return p.age < maxAge })
+    return false;
 }
 
 function spiralExpand() {

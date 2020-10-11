@@ -1,5 +1,6 @@
-// Time:
-let t = 0; 
+let t = 0; // Time:
+let rotateSpeed = 10; 
+
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -11,6 +12,19 @@ function setup() {
 
 function draw() {
     background(0, 0, 0);
+
+    // if (mouseIsPressed) {
+    //     if (mouseButton === LEFT) {
+    //         //   ellipse(50, 50, 50, 50);
+    //         rotateSpeed += 1.5;
+    //     }
+    //     if (mouseButton === RIGHT) {
+    //         rotateSpeed = PI / -1;
+    //     }
+    //     if (mouseButton === CENTER) {
+    //         triangle(23, 75, 50, 20, 78, 75);
+    //     }
+    // }
 
     spiralExpand();
 }
@@ -37,7 +51,7 @@ function spiralExpand() {
                 spiralWidth += dynamicWidth;
                 spiralTwo = spiralOne + spiralWidth;
                 
-                let rotationalSpeed = PI / 10;
+                let rotationalSpeed = PI / rotateSpeed;
 
                 let spiralOneX = spiralOne * sin(rotationalSpeed * i * t);
                 let spiralOneY = spiralOne * cos(rotationalSpeed * i * t);
