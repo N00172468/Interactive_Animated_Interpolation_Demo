@@ -62,7 +62,7 @@ function draw() {
  * 
  * BROKEN! Work in progress!   
  */
-function particle(x, y){
+function particle(x, y, xv, yv){
     this.pos = createVector(x, y);
     this.velocity = createVector(xv, yv);
     this.age = 0;
